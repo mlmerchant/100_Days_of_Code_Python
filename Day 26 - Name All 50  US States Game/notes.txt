@@ -1,0 +1,16 @@
+
+
+def get_mouse_click_coor(x, y):
+    """Get the coordinates of a click on turtle graphics screen"""
+    print(x, y)
+
+
+turtle.onscreenclick(get_mouse_click_coor)
+turtle.mainloop()
+
+✓ 1. Convert the guess to Title case
+✓ 2. Check if the guess is among the 50 states
+✓ 3. write the correct guesses on the map
+✓ 4. Use a loop to allow the user to keep guessing
+✓ 5. Record the correct guesses in a list.
+✓ 6. Keep track of the score.
