@@ -27,11 +27,8 @@ def put_state_on_map(answer):
 
 def write_missed_states_to_file(answers_list):
     """Writes the missed states to a CSV file."""
-    missed_states = []
     df = pandas.read_csv(STATES_FILE)
-    for state in list_of_states():
-        if state not in answers_list:
-            missed_states.append(state)
+    missed_states = [state for state in list_of_states() if state not in answers_list]
     missed_states_df = pandas.DataFrame()
     missed_states_df['Missed States'] = missed_states
     missed_states_df.index += 1
