@@ -5,9 +5,9 @@ import os
 # --------------------------- GLOBAL VARIABLES ------------------------------#
 
 dictionary = {}
-front_card = "N/A"
+front_card = ""
 first_turn = True
-timer = "N/A"
+timer = ""
 
 # ---------------------------- CONSTANTS ------------------------------------#
 
@@ -17,7 +17,7 @@ CARD_BACK = "./images/card_back.png"
 RIGHT = "./images/right.png"
 WRONG = "./images/wrong.png"
 DICTIONARY = "./data/french_words.csv"
-WORDS_LEFT_TO_LEARN = "./words_to_learn.csv"
+WORDS_LEFT_TO_LEARN = "./data/words_to_learn.csv"
 LANGUAGE_FONT = ("Ariel", 40, "italic")
 WORD_FONT = ("Ariel", 60, "bold")
 FRONT_LANGUAGE = "French"
@@ -29,15 +29,8 @@ BACK_LANGUAGE = "English"
 def wrong_answer():
     """Returns the card to the deck and calls a new card."""
     global first_turn
-    try:
-        window.after_cancel(timer)
-    except NameError:
-        pass
-    if first_turn:
-        first_turn = False
-        show_new_card_front()
-    else:
-        show_new_card_front()
+    first_turn = False
+    show_new_card_front()
 
 
 # ----------------------------- RIGHT ANSWER ---------------------------------- #
@@ -45,10 +38,6 @@ def wrong_answer():
 def right_answer():
     """Removes the current card from the deck and calls a new card."""
     global first_turn
-    try:
-        window.after_cancel(timer)
-    except NameError:
-        pass
     if first_turn:
         first_turn = False
         show_new_card_front()
@@ -66,6 +55,8 @@ def show_new_card_front():
     global front_card
     global dictionary
     from random import choice
+    if timer:
+        window.after_cancel(timer)
     if not dictionary:
         dictionary = {
             "Lesson Complete": "Restart App"
