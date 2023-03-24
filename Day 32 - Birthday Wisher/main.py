@@ -14,6 +14,7 @@ LETTER_TEMPLATES_FOLDER = "./letter_templates/"
 
 
 def return_letter(recipient_name):
+"""Returns a random birthday greeting that includes the recipient's name."""
     letter_files = os.listdir(LETTER_TEMPLATES_FOLDER)
     letter_file = choice(letter_files)
     letter_file = LETTER_TEMPLATES_FOLDER + letter_file
